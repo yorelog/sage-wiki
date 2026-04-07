@@ -148,6 +148,8 @@ func newProvider(name string, apiKey string, baseURL string) (Provider, error) {
 			baseURL = "http://localhost:11434"
 		}
 		return newOpenAIProvider("", baseURL+"/v1"), nil
+	case "copilot":
+		return newCopilotProvider(apiKey)
 	default:
 		return nil, fmt.Errorf("llm: unsupported provider %q", name)
 	}
@@ -161,6 +163,8 @@ func defaultRateLimit(provider string) int {
 		return 60
 	case "gemini":
 		return 60
+	case "copilot":
+		return 30
 	default:
 		return 30
 	}
