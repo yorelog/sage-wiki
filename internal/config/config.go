@@ -159,10 +159,10 @@ func (c *Config) Validate() error {
 	}
 	if c.API.Provider != "" {
 		validProviders := map[string]bool{
-			"anthropic": true, "openai": true, "gemini": true, "ollama": true, "openai-compatible": true,
+			"anthropic": true, "openai": true, "gemini": true, "ollama": true, "openai-compatible": true, "copilot": true,
 		}
 		if !validProviders[c.API.Provider] {
-			return fmt.Errorf("config: invalid provider %q (valid: anthropic, openai, gemini, ollama, openai-compatible)", c.API.Provider)
+			return fmt.Errorf("config: invalid provider %q (valid: anthropic, openai, gemini, ollama, openai-compatible, copilot)", c.API.Provider)
 		}
 	}
 	if c.Serve.Transport != "" {
